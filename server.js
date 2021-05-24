@@ -22,7 +22,7 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
-app.use(express.static('public'))
+app.use('/public', express.static(__dirname + '/public'))
 
 app.get('/', (req, res)=> {
   res.sendFile(path.join(__dirname, './views/index.html'))
