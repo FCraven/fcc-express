@@ -22,7 +22,7 @@ if (!process.env.DISABLE_XORIGIN) {
 }
 
 app.get('/', (req, res)=> {
-  res.sendFile(path.join(__dirnam + './views/index.html'))
+  res.sendFile(path.join(__dirname, './views/index.html'))
 })
 
 
