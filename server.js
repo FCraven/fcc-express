@@ -15,14 +15,14 @@ const addTime =(req,res,next)=> {
   req.time = new Date().toString();
   next();
 }
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 
 app.use((req, res, next)=> {
   console.log(`${req.method} ${req.path} - ${req.ip} `);
   next();
 })
 
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
