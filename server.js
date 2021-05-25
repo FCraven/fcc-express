@@ -8,6 +8,7 @@ var myApp = require('./myApp');
 var express = require('express');
 var path = require('path');
 var app = express();
+const bodyParser = require('body-parser')
 require('dotenv').config()
 
 const addTime =(req,res,next)=> {
@@ -19,6 +20,8 @@ app.use((req, res, next)=> {
   console.log(`${req.method} ${req.path} - ${req.ip} `);
   next();
 })
+
+app.use(bodyParser.urlencoded({extended: false}))
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
