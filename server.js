@@ -39,9 +39,15 @@ app.get('/', (req, res)=> {
   res.sendFile(path.join(__dirname, './views/index.html'))
 })
 
+app.get('/:word/echo', (req,res,next) => {
+  res.json({echo: req.params.word})
+})
+
 app.get('/now', addTime, (req,res)=> {
   res.json({time: req.time})
 })
+
+
 
 app.get('/json', (req, res)=> {
 
