@@ -10,6 +10,11 @@ var path = require('path');
 var app = express();
 require('dotenv').config()
 
+const addTime =(req,res,next)=> {
+  req.time = new Date().toString();
+  next();
+}
+
 app.use((req, res, next)=> {
   console.log(`${req.method} ${req.path} - ${req.ip} `);
   next();
@@ -34,10 +39,7 @@ app.get('/', (req, res)=> {
   res.sendFile(path.join(__dirname, './views/index.html'))
 })
 
-app.get('/now', (req,res,next)=> {
-  req.time = new Date().toString();
-  next();
-}, (req,res)=> {
+app.get('/now', addTime, (req,res)=> {
   res.send({time: req.time})
 })
 
