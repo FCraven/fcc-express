@@ -8,6 +8,8 @@ var myApp = require('./myApp');
 var express = require('express');
 var path = require('path');
 var app = express();
+require('dotenv').config()
+
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -29,6 +31,8 @@ app.get('/', (req, res)=> {
 })
 
 app.get('/json', (req, res)=> {
+
+  const env = process.env.MESSAGE_STYLE
 
   if(process.env.MESSAGE_STYLE === 'uppercase') {
     res.json({message : "HELLO JSON"})
