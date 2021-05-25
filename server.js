@@ -40,7 +40,7 @@ app.get('/', (req, res)=> {
 })
 
 app.get('/now', addTime, (req,res)=> {
-  res.send({time: req.time})
+  res.json({time: req.time})
 })
 
 app.get('/json', (req, res)=> {
