@@ -11,7 +11,7 @@ var app = express();
 require('dotenv').config()
 
 const addTime =(req,res,next)=> {
-  req.time = Date.now().toString();
+  req.time = new Date().toString();
   next();
 }
 
