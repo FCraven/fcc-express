@@ -8,20 +8,8 @@ var myApp = require('./myApp');
 var express = require('express');
 var path = require('path');
 var app = express();
-const bodyParser = require('body-parser');
+var bodyParser = require("body-parser");
 require('dotenv').config()
-
-const addTime =(req,res,next)=> {
-  req.time = new Date().toString();
-  next();
-}
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
-
-app.use((req, res, next)=> {
-  console.log(`${req.method} ${req.path} - ${req.ip} `);
-  next();
-})
 
 
 if (!process.env.DISABLE_XORIGIN) {
@@ -35,6 +23,20 @@ if (!process.env.DISABLE_XORIGIN) {
     }
     next();
   });
+}
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use((req, res, next)=> {
+  console.log(`${req.method} ${req.path} - ${req.ip} `);
+  next();
+})
+
+const addTime =(req,res,next)=> {
+  req.time = new Date().toString();
+  next();
 }
 
 app.use('/public', express.static(__dirname + '/public'))
