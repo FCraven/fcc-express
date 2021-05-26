@@ -3,12 +3,12 @@
  * the verification process may break
  * ***************************************************/
 
-var bGround = require('fcc-express-bground');
-var myApp = require('./myApp');
-var express = require('express');
-var path = require('path');
-var app = express();
-var bodyParser = require("body-parser");
+const bGround = require('fcc-express-bground');
+const myApp = require('./myApp');
+const express = require('express');
+const path = require('path');
+const app = express();
+const bodyParser = require("body-parser");
 require('dotenv').config()
 
 
