@@ -57,8 +57,6 @@ app.get('/now', addTime, (req,res)=> {
   res.json({time: req.time})
 })
 
-
-
 app.get('/json', (req, res)=> {
 
   if(process.env.MESSAGE_STYLE === 'uppercase') {
@@ -68,6 +66,9 @@ app.get('/json', (req, res)=> {
   }
 })
 
+app.post('/name', (req,res,next)=> {
+  res.json({name: `${req.body.first} ${req.body.last}`})
+})
 
 
 
